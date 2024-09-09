@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diễn đàn</title>
+    <link rel="stylesheet" href="../css/forum.css" />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <link rel="shortcut icon" href="img/logo.png" type="image/x-icon" />
+  <script src="../js/wow.min.js"></script>
+  <script>
+    new WOW().init();
+  </script>
+  <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul class="flex">
+          <li class="logo"><h1>GoTech.VN</h1></li>
+          <li><a href="/">Trang chủ</a></li>
+          <li><a href="khoahoc.html">Khóa Học</a></li>
+          <li><a href="#">Diễn Đàn</a></li>
+          <li><a href="introduce.html">Giới Thiệu</a></li>
+        </ul>
+      </nav>
+    </header>
+    <!-----------gototop---------->
+    <div class="gotop" onclick="goTop()"><a>
+      <i class="fa-solid fa-chevron-right"></i></a></div>
+    <!-- Chỗ người dùng post bài -->
+    <div class="post-status-container animate__fadeInUp wow animate__animated" data-wow-delay="0.05s">
+      <form class="post-box">
+        <div class="avt"><img src="../img/anh1.jpg" alt="" /></div>
+        <div class="input-tus">
+          <input id="article" placeholder="Bạn viết gì đi" type="text" />
+        </div>
+        <button type="button" class="btn-post" onclick="postArticle()">
+          Đăng bài
+        </button>
+      </form>
+    </div>
+    <main class="forum-container">
+      <!-- Khung 1 chủ đề -->
+      <div class="forum-box animate__fadeInUp wow animate__animated" data-wow-delay="0.1s">
+        <!-- Một chủ đề thảo luận -->
+        <div class="topic-box">
+          <div class="info-user">
+            <img src="../img/anh2.jpg" alt="" />
+            <h3>An Bình</h3>
+          </div>
+          <div class="topic-content">
+            <p>
+              "Chào mọi người, mình đang dùng Docker để chạy Node.js và
+              PostgreSQL, nhưng khi kết nối thì bị lỗi 'Connection Refused'. Có
+              ai biết cách fix không?"
+            </p>
+          </div>
+          <div class="comment-box">
+            <div class="cmt">
+              <div class="user-cmt">
+                <div ><img src="../img/anh3.jpg" alt="" /></div>
+                <div class="cmt-text">
+                  <h4>Hoàng Dũng</h4>
+                  <p>
+                    Bạn thử kiểm tra xem các container có chung network không,
+                    tạo network rồi connect lại thử nhé.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="cmt">
+              <div class="user-cmt">
+                <div class=""><img src="../img/anh4.jpg" alt="" /></div>
+                <div class="cmt-text">
+                  <h4>Thiên An</h4>
+                  <p>
+                    Có thể do bạn dùng localhost, thử dùng tên container thay
+                    cho localhost đi.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="cmt">
+              <div class="user-cmt">
+                <div><img src="../img/anh5.jpg" alt="" /></div>
+                <div class="cmt-text">
+                  <h4>Đức Hòa</h4>
+                  <p>
+                    Kiểm tra xem bạn đã expose đúng cổng chưa, nhớ mở cổng 5432
+                    cho PostgreSQL
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="post-cmt-box">
+            <div class="post-cmt">
+              <img src="../img/anh1.jpg" alt="" />
+              <div class="post-cmt-input">
+                <input
+                  id="post-cmt-text"
+                  placeholder="Viết bình luận..."
+                  type="text"
+                />
+              </div>
+              <button type="button" class="btn-post-cmt" onclick="replyPost()">
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Một chủ đề thảo luận -->
+      <div class="forum-box animate__fadeInUp wow animate__animated" >
+        <div class="topic-box">
+          <div class="info-user">
+            <img src="../img/anh7.jpg" alt="" />
+            <h3>Tuấn Kiệt</h3>
+          </div>
+          <div class="topic-content">
+            <p>
+              Chào mọi người, trang web mình load khá chậm, nhất là khi có nhiều
+              dữ liệu. Có cách nào để tối ưu hóa không?
+            </p>
+          </div>
+          <div class="comment-box">
+            <div class="cmt">
+              <div class="user-cmt">
+                <div class=""><img src="../img/anh8.jpg" alt="" /></div>
+                <div class="cmt-text">
+                  <h4>Michael Tâm</h4>
+                  <p>
+                    Xem lại database đi, có thể do query của bạn chậm đấy, thử
+                    thêm index cho các bảng đi
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="cmt">
+              <div class="user-cmt">
+                <div class=""><img src="../img/anh9.png" alt="" /></div>
+                <div class="cmt-text">
+                  <h4> Jacob Nam</h4>
+                  <p>
+                    Bạn thử lazy load hình ảnh và các tài nguyên lớn chưa? Nó
+                    giúp tải chỉ khi người dùng cuộn xuống trang, cải thiện tốc
+                    độ đáng kể đấy! Mình cũng gặp vấn đề tương tự và giải pháp
+                    này giúp giảm hẳn thời gian tải trang
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="cmt">
+              <div class="user-cmt">
+                <div class=""><img src="../img/anh10.jpg" alt="" /></div>
+                <div class="cmt-text">
+                  <h4>Bùi Hải Đăng</h4>
+                  <p>
+                    Cache dữ liệu trên server đi, giúp giảm tải số request đến
+                    database. Nếu dùng Redis hoặc Memcached thì tốt hơn nữa.
+                    Mình thường dùng cho các project có lượng truy cập cao
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="post-cmt-box">
+            <div class="post-cmt">
+              <img src="../img/anh1.jpg" alt="" />
+              <div class="post-cmt-input">
+                <input placeholder="Viết bình luận..." type="text" />
+              </div>
+              <button class="btn-post-cmt">
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Một chủ đề thảo luận -->
+      <div class="forum-box animate__fadeInUp wow animate__animated" >
+        <div class="topic-box">
+          <div class="info-user">
+            <img src="../img/anh11.jpg" alt="" />
+            <h3>Michael Phong</h3>
+          </div>
+          <div class="topic-content">
+            <p>
+              Chào mọi người, team mình đang làm một dự án phần mềm, nhưng có vẻ
+              hơi lộn xộn trong việc quản lý source code. Có cách nào tốt hơn để
+              làm việc chung không
+            </p>
+          </div>
+          <div class="comment-box">
+            <div class="cmt">
+              <div class="user-cmt">
+                <div class=""><img src="../img/anh12.jpg" alt="" /></div>
+                <div class="cmt-text">
+                  <h4>Hoàng Thiên Phúc</h4>
+                  <p>
+                    Dùng code review thường xuyên để đảm bảo code của mọi người
+                    đúng tiêu chuẩn và không có bug
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="cmt">
+              <div class="user-cmt">
+                <div class=""><img src="../img/anh13.jpg" alt="" /></div>
+                <div class="cmt-text">
+                  <h4>Nguyễn Thanh Hưng</h4>
+                  <p>
+                    Bạn nên sử dụng Git flow để phân nhánh cho rõ ràng. Mỗi
+                    người làm trên một nhánh riêng, sau đó merge vào branch
+                    chính khi hoàn thành.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="cmt">
+              <div class="user-cmt">
+                <div class=""><img src="../img/anh14.jpg" alt="" /></div>
+                <div class="cmt-text">
+                  <h4>Phạm Quang Anh</h4>
+                  <p>
+                    Thực hiện họp ngắn hằng ngày để sync tiến độ và biết ai đang
+                    làm gì, đỡ bị trùng lặp công việc
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="post-cmt-box">
+            <div class="post-cmt">
+              <img src="../img/anh1.jpg" alt="" />
+              <div class="post-cmt-input">
+                <input placeholder="Viết bình luận..." type="text" />
+              </div>
+              <button class="btn-post-cmt">
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Một chủ đề thảo luận -->
+      <div class="forum-box animate__fadeInUp wow animate__animated">
+        <div class="topic-box">
+          <div class="info-user">
+            <img src="../img/anh15.jpg" alt="" />
+            <h3>Lê Hoàng Minh</h3>
+          </div>
+          <div class="topic-content">
+            <p>
+              Mn ơi! game mình có nhiều đối tượng chuyển động và nó bắt đầu bị
+              giật lag. Có cách nào để tối ưu hóa hiệu suất không?"
+            </p>
+          </div>
+          <div class="comment-box">
+            <div class="cmt">
+              <div class="user-cmt">
+                <div class=""><img src="../img/anh6.jpg" alt="" /></div>
+                <div class="cmt-text">
+                  <h4>Vũ Daniel</h4>
+                  <p>
+                    Chia nhỏ các đối tượng theo từng khu vực và chỉ render những
+                    gì đang nằm trong tầm nhìn của camera thôi. Mình thường dùng
+                    cách này để tiết kiệm tài nguyên
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="cmt">
+              <div class="user-cmt">
+                <div class=""><img src="../img/anh9.png" alt="" /></div>
+                <div class="cmt-text">
+                  <h4>David Quân </h4>
+                  <p>
+                    Chắc cần giảm độ phức tạp của các model 3D đó, dùng LOD
+                    (Level of Detail) để các model xa camera có ít chi tiết hơn
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="cmt">
+              <div class="user-cmt">
+                <div class=""><img src="../img/anh12.jpg" alt="" /></div>
+                <div class="cmt-text">
+                  <h4> Kevin Khánh</h4>
+                  <p>
+                    Đơn giản, giảm số lượng đối tượng trên màn hình là hết lag
+                    thôi. Đừng cố cho quá nhiều thứ chuyển động cùng lúc
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="cmt"></div>
+            <div class="user-cmt">
+              <div class=""><img src="../img/anh14.jpg" alt="" /></div>
+              <div class="cmt-text">
+                <h4>Sarah Linh</h4>
+                <p>
+                  Chia nhỏ các đối tượng theo từng khu vực và chỉ render những
+                  gì đang nằm trong tầm nhìn của camera thôi. Mình thường dùng
+                  cách này để tiết kiệm tài nguyên
+                </p>
+              </div>
+            </div>
+          </div>
+        
+        <div class="post-cmt-box">
+          <div class="post-cmt">
+            <img src="../img/anh1.jpg" alt="" />
+            <div class="post-cmt-input">
+              <input
+                id="post-cmt-text"
+                placeholder="Viết bình luận..."
+                type="text"
+              />
+            </div>
+            <button type="button" class="btn-post-cmt" onclick="replyPost()">
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Một chủ đề -->
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-top">
+        <div>
+          <img src="../img/logo.png" alt="logo" />
+          <p>Chia sẻ kiến thức - Kết nối tương lai</p>
+          <div class="icons">
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-tiktok"></i>
+            <i class="fa-brands fa-youtube"></i>
+          </div>
+        </div>
+
+        <div class="info">
+          <div class="about">
+            <li class="footer-title">Về chúng tôi</li>
+            <ul>
+              <li>Giới thiệu</li>
+              <li>Chính sách bảo mật</li>
+              <li>Điều khoản dịch vụ</li>
+            </ul>
+          </div>
+          <div class="learn-free">
+            <li class="footer-title">Học miễn phí</li>
+            <ul>
+              <li>Luyện tập</li>
+              <li>Khóa học</li>
+            </ul>
+          </div>
+          <div class="Forum">
+            <li class="footer-title">Cộng đồng</li>
+            <ul>
+              <li>Kiến thức</li>
+              <li>Tin tức</li>
+              <li>Hỏi đáp</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="footer-bot">
+        <div class="contact-le">
+          <h2>cộng đồng hỗ trợ tin học và lập trình GoTech</h2>
+          <i class="fa-solid fa-location-dot"
+            ><span class="local">
+              Khu dân cư Nhơn Đức, xã Nhơn Đức, huyện Nhà Bè, thành phố Hồ Chí
+              Minh</span
+            ></i
+          >
+        </div>
+        <div class="contact-ri">
+          <div>
+            <h2>Thông tin liên hệ</h2>
+            <i class="fa-solid fa-envelope"
+              ><span class="email"> gotech.vn@gmail.comm</span></i
+            >
+          </div>
+          <div class="img-dk">
+            <img src="../img/dk.png" alt="" />
+          </div>
+        </div>
+      </div>
+      <hr />
+      <div class="last-footer">
+        <p>&copy;2024 <span class="gotech">GoTech.vn</span></p>
+      </div>
+    </footer>
+    <!-- js -->
+    <script src="../js/forum.js"></script>
+  </body>
+</html>
